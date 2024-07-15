@@ -3,13 +3,14 @@ using System.Security.Cryptography;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using FluentFTP;
 
 namespace TikTokBot
 {
     public partial class Form1 : Form
     {
-        private readonly string clientId = "XXX";
-        private readonly string clientSecret = "XXX";
+        private readonly string clientId = "clientId";
+        private readonly string clientSecret = "clientSecret";
         private readonly string redirectUri = "http://localhost:3455/callback/";
         private string codeVerifier = "";
         private string AccessToken = "";
@@ -42,6 +43,71 @@ namespace TikTokBot
                 buttonPublish.Enabled = true;
             }
         }
+
+        private void buttonGenerateImage_Click(object sender, EventArgs e)
+        {
+            ImageGenerator(richTextBoxPrompt.Text, textBoxAuth_Token_AI.Text, textBoxAPI_URL.Text, textBoxDomain.Text, textBoxFTPusername.Text, textBoxFTPpassword.Text);
+        }
+
+        static async Task ImageGenerator(string prompt, string Auth_Token, string Api_Url, string host, string username, string password)
+        {
+            string localFilePath = null ;
+            try
+            {
+                // Generate image
+                byte[] imageBytes = await QueryAsync(new { inputs = prompt }, Auth_Token, Api_Url);
+                using (var ms = new MemoryStream(imageBytes))
+                {
+                    // Save temp_image locally 
+                    Image image = Image.FromStream(ms);
+                    localFilePath = Path.GetTempFileName() + ".jpeg";
+                    image.Save(localFilePath);
+                    // MessageBox.Show($"Image saved temporarily at {localFilePath}");
+
+                    // Upload the image to the server
+                    string remoteFilePath = "/files/image.jpeg";
+                    UploadToFtpServer(localFilePath, remoteFilePath, host, username, password);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+            // Optionally, delete the local temporary file
+            File.Delete(localFilePath);
+            // MessageBox.Show("Temporary image file deleted.");
+        }
+
+        // Query for generate image
+        private static async Task<byte[]> QueryAsync(object payload, string Auth_Token, string Api_Url)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{Auth_Token}");
+                StringContent jsonContent = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PostAsync($"{Api_Url}", jsonContent);
+                response.EnsureSuccessStatusCode();
+
+                return await response.Content.ReadAsByteArrayAsync();
+            }
+        }
+
+        private static void UploadToFtpServer(string localFilePath, string remoteFilePath, string host, string username, string password)
+        {
+            using (var client = new FtpClient(host, username, password))
+            {
+                client.Connect();
+
+                // Utilisation de UploadFile pour envoyer le fichier au serveur FTP
+                client.UploadFile(localFilePath, remoteFilePath);
+
+                MessageBox.Show($"Image uploaded successfully to {remoteFilePath}");
+
+                client.Disconnect();
+            }
+        }
+
 
         private void buttonPublish_Click(object sender, EventArgs e)
         {
@@ -187,12 +253,12 @@ namespace TikTokBot
 
                     // Définir les informations de la source (pour une photo)
                     var sourceInfo = new
-                    {                             
+                    {
                         source = "PULL_FROM_URL",
                         photo_cover_index = 0,
                         photo_images = new string[]
                         {
-                            "https://[file url].jpeg"
+                            "https://[Your_domain]/files/image.jpeg"
                         }
                     };
 

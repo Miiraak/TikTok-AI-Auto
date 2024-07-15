@@ -19,6 +19,7 @@ namespace TikTokBot
         {
             InitializeComponent();
             buttonPublish.Enabled = false;
+            panelPhoto.Visible = false;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -36,7 +37,7 @@ namespace TikTokBot
         {
             if (!hasTokenBeenRetrieved)
             {
-                buttonConnection.Visible = false;
+                buttonConnection.Enabled = false;
                 InitializeWebView2Control();
                 buttonPublish.Enabled = true;
             }
@@ -110,7 +111,7 @@ namespace TikTokBot
 
             if (accessToken == null)
             {
-                MessageBox.Show($"Failed to get access token. Response: {responseContent}");
+                //MessageBox.Show($"Failed to get access token. Response: {responseContent}");
                 return;
             }
             else
@@ -120,6 +121,7 @@ namespace TikTokBot
 
                 await GetUserProfileAsync(accessToken);
                 webView2.Visible = false;
+                panelPhoto.Visible = true;
             }
         }
 
@@ -146,7 +148,7 @@ namespace TikTokBot
             }
             else
             {
-                MessageBox.Show($"Failed to get user profile. Response: {responseContent}");
+                //MessageBox.Show($"Failed to get user profile. Response: {responseContent}");
             }
         }
 
@@ -176,21 +178,21 @@ namespace TikTokBot
                     // Définir les informations de la publication
                     var postInfo = new
                     {
-                        title = "Test #2",
-                        description = "this will be a #funny project on @tiktok",
-                        disable_comment = false,
-                        privacy_level = "SELF_ONLY",
-                        auto_add_music = true
+                        title = textBoxTitle.Text,
+                        description = richTextBoxDescription.Text,
+                        disable_comment = checkBoxComment.Checked,
+                        privacy_level = comboBoxPrivacyLevel.Text,
+                        auto_add_music = checkBoxAutoMusic.Checked
                     };
 
                     // Définir les informations de la source (pour une photo)
                     var sourceInfo = new
-                    {
+                    {                             
                         source = "PULL_FROM_URL",
                         photo_cover_index = 0,
                         photo_images = new string[]
                         {
-                            "https://[your file url].jpeg"
+                            "https://[file url].jpeg"
                         }
                     };
 
@@ -233,7 +235,7 @@ namespace TikTokBot
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors de la publication de la photo : {ex.Message}");
+                MessageBox.Show($"Erreur lors de la publication de la photo : {ex}");
             }
         }
     }

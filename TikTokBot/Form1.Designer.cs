@@ -37,7 +37,21 @@
             label1 = new Label();
             buttonPublish = new Button();
             openFileDialog1 = new OpenFileDialog();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            comboBoxPrivacyLevel = new ComboBox();
+            checkBoxDuet = new CheckBox();
+            checkBoxComment = new CheckBox();
+            textBoxTitle = new TextBox();
+            panelPhoto = new Panel();
+            checkBoxAutoMusic = new CheckBox();
+            label7 = new Label();
+            richTextBoxDescription = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)webView2).BeginInit();
+            panelPhoto.SuspendLayout();
             SuspendLayout();
             // 
             // buttonConnection
@@ -84,16 +98,16 @@
             // 
             // textBoxUsername
             // 
-            textBoxUsername.Location = new Point(181, 41);
+            textBoxUsername.Location = new Point(93, 27);
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.ReadOnly = true;
-            textBoxUsername.Size = new Size(253, 23);
+            textBoxUsername.Size = new Size(169, 23);
             textBoxUsername.TabIndex = 8;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(159, 16);
+            label1.Location = new Point(93, 9);
             label1.Name = "label1";
             label1.Size = new Size(60, 15);
             label1.TabIndex = 9;
@@ -113,6 +127,130 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(130, 34);
+            label2.Name = "label2";
+            label2.Size = new Size(35, 15);
+            label2.TabIndex = 11;
+            label2.Text = "Title :";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(130, 88);
+            label3.Name = "label3";
+            label3.Size = new Size(73, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Description :";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(130, 405);
+            label4.Name = "label4";
+            label4.Size = new Size(81, 15);
+            label4.TabIndex = 13;
+            label4.Text = "Privacy Level :";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(130, 460);
+            label5.Name = "label5";
+            label5.Size = new Size(81, 15);
+            label5.TabIndex = 14;
+            label5.Text = "Disable Duet ?";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(130, 480);
+            label6.Name = "label6";
+            label6.Size = new Size(108, 15);
+            label6.TabIndex = 15;
+            label6.Text = "Disable comment ?";
+            // 
+            // comboBoxPrivacyLevel
+            // 
+            comboBoxPrivacyLevel.FormattingEnabled = true;
+            comboBoxPrivacyLevel.Items.AddRange(new object[] { "PUBLIC_TO_EVERYONE", "MUTUAL_FOLLOW_FRIENDS", "FOLLOWER_OF_CREATOR", "SELF_ONLY" });
+            comboBoxPrivacyLevel.Location = new Point(132, 423);
+            comboBoxPrivacyLevel.Name = "comboBoxPrivacyLevel";
+            comboBoxPrivacyLevel.Size = new Size(328, 23);
+            comboBoxPrivacyLevel.TabIndex = 16;
+            // 
+            // checkBoxDuet
+            // 
+            checkBoxDuet.AutoSize = true;
+            checkBoxDuet.Location = new Point(217, 461);
+            checkBoxDuet.Name = "checkBoxDuet";
+            checkBoxDuet.Size = new Size(15, 14);
+            checkBoxDuet.TabIndex = 17;
+            checkBoxDuet.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxComment
+            // 
+            checkBoxComment.AutoSize = true;
+            checkBoxComment.Location = new Point(244, 482);
+            checkBoxComment.Name = "checkBoxComment";
+            checkBoxComment.Size = new Size(15, 14);
+            checkBoxComment.TabIndex = 18;
+            checkBoxComment.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTitle
+            // 
+            textBoxTitle.Location = new Point(130, 52);
+            textBoxTitle.Name = "textBoxTitle";
+            textBoxTitle.Size = new Size(330, 23);
+            textBoxTitle.TabIndex = 20;
+            // 
+            // panelPhoto
+            // 
+            panelPhoto.Controls.Add(richTextBoxDescription);
+            panelPhoto.Controls.Add(checkBoxAutoMusic);
+            panelPhoto.Controls.Add(label7);
+            panelPhoto.Controls.Add(label4);
+            panelPhoto.Controls.Add(textBoxTitle);
+            panelPhoto.Controls.Add(label2);
+            panelPhoto.Controls.Add(label3);
+            panelPhoto.Controls.Add(checkBoxComment);
+            panelPhoto.Controls.Add(label5);
+            panelPhoto.Controls.Add(checkBoxDuet);
+            panelPhoto.Controls.Add(label6);
+            panelPhoto.Controls.Add(comboBoxPrivacyLevel);
+            panelPhoto.Location = new Point(12, 70);
+            panelPhoto.Name = "panelPhoto";
+            panelPhoto.Size = new Size(591, 551);
+            panelPhoto.TabIndex = 21;
+            // 
+            // checkBoxAutoMusic
+            // 
+            checkBoxAutoMusic.AutoSize = true;
+            checkBoxAutoMusic.Location = new Point(210, 502);
+            checkBoxAutoMusic.Name = "checkBoxAutoMusic";
+            checkBoxAutoMusic.Size = new Size(15, 14);
+            checkBoxAutoMusic.TabIndex = 22;
+            checkBoxAutoMusic.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(130, 500);
+            label7.Name = "label7";
+            label7.Size = new Size(74, 15);
+            label7.TabIndex = 21;
+            label7.Text = "Music auto ?";
+            // 
+            // richTextBoxDescription
+            // 
+            richTextBoxDescription.Location = new Point(130, 106);
+            richTextBoxDescription.Name = "richTextBoxDescription";
+            richTextBoxDescription.Size = new Size(330, 279);
+            richTextBoxDescription.TabIndex = 23;
+            richTextBoxDescription.Text = "";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -120,6 +258,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(615, 633);
             ControlBox = false;
+            Controls.Add(panelPhoto);
             Controls.Add(buttonPublish);
             Controls.Add(label1);
             Controls.Add(textBoxUsername);
@@ -133,6 +272,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tiktok Bot";
             ((System.ComponentModel.ISupportInitialize)webView2).EndInit();
+            panelPhoto.ResumeLayout(false);
+            panelPhoto.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,5 +286,18 @@
         private Label label1;
         private Button buttonPublish;
         private OpenFileDialog openFileDialog1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private ComboBox comboBoxPrivacyLevel;
+        private CheckBox checkBoxDuet;
+        private CheckBox checkBoxComment;
+        private TextBox textBoxTitle;
+        private Panel panelPhoto;
+        private CheckBox checkBoxAutoMusic;
+        private Label label7;
+        private RichTextBox richTextBoxDescription;
     }
 }

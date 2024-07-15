@@ -1,5 +1,6 @@
 # TikTokBot
-In early stage do not use now
+In early stage.
+[Doc in work]
 
 [...In work...]
 | Feature | Etat |

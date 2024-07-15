@@ -1,4 +1,4 @@
-# TikTokBot
+# TikTok-Bot-Auto
 In early stage. <br>
 [Doc in work]
 

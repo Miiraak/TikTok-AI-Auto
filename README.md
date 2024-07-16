@@ -1,5 +1,5 @@
 # TikTok-Bot-Auto
-In early stage. <br>
+In early stage. Sandbox version <br>
 [Doc in work]
 
 [...In work...]

@@ -1,13 +1,19 @@
 # TikTok-AI-Auto
 In early stage. Sandbox version <br>
 
-TikTok-AI-Auto is a proof of concept project that automates the process of calling the TikTok API to publish AI-generated images. <br> The program first makes a call to the TikTok API for login and token gathering. It then calls the API's serverless AI-generator to generate an image, which is stored on a web-hosted server. <br> Finally, another call to the TikTok API is made to directly post the generated image on the logged profile.
+TikTok-AI-Auto is a proof of concept project that automates the process of calling the TikTok API to publish AI-generated images. <br> 
+The program first makes a call to the TikTok API for login and token gathering. It then calls the API's serverless AI-generator to generate an image, which is stored on a web-hosted server. <br> 
+Finally, another call to the TikTok API is made to directly post the generated image on the logged profile.
 
 ## Installation
 
 To use TikTok-AI-Auto, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/miiraak/TikTok-AI-Auto.git`
+
+or
+
+2. Open it with VisualStudio
 
 ...Coming...
 
@@ -29,7 +35,6 @@ This project is licensed under the MIT License. See the [LICENSE](https://github
 |:-------:|:----:|
 | Authorization | ✅ |
 | Token | ✅ |
-| Post Photo | 🔴 |
 | Post info by user | ➖ |
 | AI Generated image | ✅ |
 | Upload image to server | ✅ |
